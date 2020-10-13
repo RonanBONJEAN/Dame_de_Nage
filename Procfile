@@ -1,1 +1,1 @@
-web: java -cp "target/dependency/*":target/classes fr.adaming.*
+web:    java $JAVA_OPTS --port $PORT target/*.war
