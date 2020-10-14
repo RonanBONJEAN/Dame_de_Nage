@@ -1,1 +1,1 @@
-web: SPRING_APPLICATION_JSON='{"server.port":$PORT}' java $JAVA_OPTS -jar target/dependency/webapp-runner.jar  target/*.war
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/dependency/webapp-runner.jar  target/*.war
