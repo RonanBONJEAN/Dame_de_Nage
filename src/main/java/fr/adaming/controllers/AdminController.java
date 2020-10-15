@@ -63,6 +63,7 @@ public class AdminController {
 		Images cropArticle1 = new Images();
 		Images cropArticle2 = new Images();
 		List<Images> liste = iSer.getAllImages();
+		if (liste.size()>0){
 		for (Images i : liste) {
 			if ("Slider1".equalsIgnoreCase(i.getName())) {
 				imageSlider1 = i;
@@ -83,7 +84,7 @@ public class AdminController {
 		cropSlider3.setPath(imageSlider3.getPath().substring(31));
 		cropArticle1.setPath(imageArticle1.getPath().substring(31));
 		cropArticle2.setPath(imageArticle2.getPath().substring(31));
-
+		}
 		ModelAndView mv = new ModelAndView();
 
 		mv.addObject("imageSlider1", imageSlider1);
