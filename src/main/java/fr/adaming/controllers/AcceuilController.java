@@ -164,7 +164,7 @@ public class AcceuilController {
 			}
 
 		}
-		if (listePrixGlage.size > 0) {
+		if (listePrixGlace.size > 0) {
 			listePrixGlace.add(listeGlace.get(0));
 			for (Vins v : listeV) {
 				if (v.getType().equalsIgnoreCase("Rouge")) {
