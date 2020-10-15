@@ -39,63 +39,63 @@ public class AdminController {
 
 	@Autowired
 	private IHorrairesService hSer;
-	
+
 	@Autowired
 	private IBoissonsService bSer;
-	
+
 	@Autowired
 	private IImagesService iSer;
-	
+
 	private double prixpGlace;
 	private double prixmGlace;
 	private double prixgGlace;
 
 	@RequestMapping(value = "/acceuil", method = RequestMethod.GET)
 	public ModelAndView afficheAdmin() {
-		Images imageSlider1= new Images();
-		Images imageSlider2= new Images();
-		Images imageSlider3= new Images();
-		Images imageArticle1= new Images();
-		Images imageArticle2= new Images();
-		Images cropSlider1= new Images();
-		Images cropSlider2= new Images();
-		Images cropSlider3= new Images();
-		Images cropArticle1= new Images();
-		Images cropArticle2= new Images();
-		List<Images> liste =iSer.getAllImages();
+		Images imageSlider1 = new Images();
+		Images imageSlider2 = new Images();
+		Images imageSlider3 = new Images();
+		Images imageArticle1 = new Images();
+		Images imageArticle2 = new Images();
+		Images cropSlider1 = new Images();
+		Images cropSlider2 = new Images();
+		Images cropSlider3 = new Images();
+		Images cropArticle1 = new Images();
+		Images cropArticle2 = new Images();
+		List<Images> liste = iSer.getAllImages();
 		for (Images i : liste) {
-			if("Slider1".equalsIgnoreCase(i.getName())){
-				imageSlider1=i;
-			} else if("Slider2".equalsIgnoreCase(i.getName())){
-				imageSlider2=i;
-			} else if("Slider3".equalsIgnoreCase(i.getName())){
-				imageSlider3=i;
-			}else if("Article1".equalsIgnoreCase(i.getName())){
-				imageArticle1=i;
-			}else if("Article2".equalsIgnoreCase(i.getName())){
-				imageArticle2=i;
+			if ("Slider1".equalsIgnoreCase(i.getName())) {
+				imageSlider1 = i;
+			} else if ("Slider2".equalsIgnoreCase(i.getName())) {
+				imageSlider2 = i;
+			} else if ("Slider3".equalsIgnoreCase(i.getName())) {
+				imageSlider3 = i;
+			} else if ("Article1".equalsIgnoreCase(i.getName())) {
+				imageArticle1 = i;
+			} else if ("Article2".equalsIgnoreCase(i.getName())) {
+				imageArticle2 = i;
 			}
-			
+
 		}
-		
+
 		cropSlider1.setPath(imageSlider1.getPath().substring(31));
 		cropSlider2.setPath(imageSlider2.getPath().substring(31));
 		cropSlider3.setPath(imageSlider3.getPath().substring(31));
 		cropArticle1.setPath(imageArticle1.getPath().substring(31));
 		cropArticle2.setPath(imageArticle2.getPath().substring(31));
-		
-		ModelAndView mv= new ModelAndView();
-		
-		mv.addObject("imageSlider1",imageSlider1);
-		mv.addObject("imageSlider2",imageSlider2);
-		mv.addObject("imageSlider3",imageSlider3);
-		mv.addObject("imageArticle1",imageArticle1);
-		mv.addObject("imageArticle2",imageArticle2);
-		mv.addObject("cropSlider1",cropSlider1);
-		mv.addObject("cropSlider2",cropSlider2);
-		mv.addObject("cropSlider3",cropSlider3);
-		mv.addObject("cropArticle1",cropArticle1);
-		mv.addObject("cropArticle2",cropArticle2);
+
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("imageSlider1", imageSlider1);
+		mv.addObject("imageSlider2", imageSlider2);
+		mv.addObject("imageSlider3", imageSlider3);
+		mv.addObject("imageArticle1", imageArticle1);
+		mv.addObject("imageArticle2", imageArticle2);
+		mv.addObject("cropSlider1", cropSlider1);
+		mv.addObject("cropSlider2", cropSlider2);
+		mv.addObject("cropSlider3", cropSlider3);
+		mv.addObject("cropArticle1", cropArticle1);
+		mv.addObject("cropArticle2", cropArticle2);
 		mv.setViewName("espaceAdmin");
 		return mv;
 	}
@@ -191,17 +191,19 @@ public class AdminController {
 			}
 
 		}
-		listePrixGlace.add(listeGlace.get(0));
-		this.prixpGlace=listePrixGlace.get(0).getPrixp();
-		this.prixmGlace=listePrixGlace.get(0).getPrixm();
-		this.prixgGlace=listePrixGlace.get(0).getPrixg();
-		for (Vins v : listeV){
-			if (v.getType().equalsIgnoreCase("Rouge")){
-				listeVinsRouge.add(v);
-			}else if (v.getType().equalsIgnoreCase("Blanc")){
-				listeVinsBlanc.add(v);
-			}else if (v.getType().equalsIgnoreCase("Rose")){
-				listeVinsRose.add(v);
+		if (listePrixGlage.size > 0) {
+			listePrixGlace.add(listeGlace.get(0));
+			this.prixpGlace = listePrixGlace.get(0).getPrixp();
+			this.prixmGlace = listePrixGlace.get(0).getPrixm();
+			this.prixgGlace = listePrixGlace.get(0).getPrixg();
+			for (Vins v : listeV) {
+				if (v.getType().equalsIgnoreCase("Rouge")) {
+					listeVinsRouge.add(v);
+				} else if (v.getType().equalsIgnoreCase("Blanc")) {
+					listeVinsBlanc.add(v);
+				} else if (v.getType().equalsIgnoreCase("Rose")) {
+					listeVinsRose.add(v);
+				}
 			}
 		}
 
@@ -264,10 +266,11 @@ public class AdminController {
 	@RequestMapping(value = "/submitUpDateFerm", method = RequestMethod.POST)
 	public String submitUpDateFerm(@ModelAttribute Horraires horraire, RedirectAttributes ra) {
 		Horraires horraireOut = hSer.getHorrairesById(horraire.getId());
-		if(horraire.getFermeture().isEmpty()){
+		if (horraire.getFermeture().isEmpty()) {
 			horraire.setFermeture(null);
 		} else {
-		horraire.setFermeture(horraire.getFermeture()+" au "+ horraire.getJourFerme());}
+			horraire.setFermeture(horraire.getFermeture() + " au " + horraire.getJourFerme());
+		}
 		horraireOut.setFermeture(horraire.getFermeture());
 		boolean isud = hSer.upDateHorraires(horraireOut);
 		if (isud) {
@@ -307,10 +310,11 @@ public class AdminController {
 		if (plat.getNom().contains("Ã")) {
 			plat.setNom(plat.getNom().replaceAll("Ã", "à"));
 		}
-		if ("Glace".equalsIgnoreCase(plat.getCategorie())){
-				plat.setPrixg(prixgGlace);
-				plat.setPrixp(prixpGlace);
-				plat.setPrixm(prixmGlace);}
+		if ("Glace".equalsIgnoreCase(plat.getCategorie())) {
+			plat.setPrixg(prixgGlace);
+			plat.setPrixp(prixpGlace);
+			plat.setPrixm(prixmGlace);
+		}
 		boolean isAdd = pSer.addPlats(plat);
 		if (isAdd) {
 			return "redirect:/admin/carte";
@@ -335,52 +339,53 @@ public class AdminController {
 
 	@RequestMapping(value = "/submitUpDateP", method = RequestMethod.POST)
 	public String upDatePlatpost(@ModelAttribute Plats plat, RedirectAttributes ra) {
-		boolean isud=true;
-		if (plat.getNom()!=null){
-		if (plat.getNom().contains("Ã©")) {
-			plat.setNom(plat.getNom().replaceAll("Ã©", "é"));
+		boolean isud = true;
+		if (plat.getNom() != null) {
+			if (plat.getNom().contains("Ã©")) {
+				plat.setNom(plat.getNom().replaceAll("Ã©", "é"));
+			}
+			if (plat.getNom().contains("Ã¨")) {
+				plat.setNom(plat.getNom().replaceAll("Ã¨", "è"));
+			}
+			if (plat.getNom().contains("Ãª")) {
+				plat.setNom(plat.getNom().replaceAll("Ãª", "ê"));
+			}
+			if (plat.getNom().contains("Ã´")) {
+				plat.setNom(plat.getNom().replaceAll("Ã´", "ô"));
+			}
+			if (plat.getNom().contains("Ã«")) {
+				plat.setNom(plat.getNom().replaceAll("Ã«", "ë"));
+			}
+			if (plat.getNom().contains("Ã¯")) {
+				plat.setNom(plat.getNom().replaceAll("Ã¯", "ï"));
+			}
+			if (plat.getNom().contains("Ã¢")) {
+				plat.setNom(plat.getNom().replaceAll("Ã¢", "â"));
+			}
+			if (plat.getNom().contains("Ã§")) {
+				plat.setNom(plat.getNom().replaceAll("Ã§", "ç"));
+			}
+			if (plat.getNom().contains("Ã")) {
+				plat.setNom(plat.getNom().replaceAll("Ã", "à"));
+			}
 		}
-		if (plat.getNom().contains("Ã¨")) {
-			plat.setNom(plat.getNom().replaceAll("Ã¨", "è"));
-		}
-		if (plat.getNom().contains("Ãª")) {
-			plat.setNom(plat.getNom().replaceAll("Ãª", "ê"));
-		}
-		if (plat.getNom().contains("Ã´")) {
-			plat.setNom(plat.getNom().replaceAll("Ã´", "ô"));
-		}
-		if (plat.getNom().contains("Ã«")) {
-			plat.setNom(plat.getNom().replaceAll("Ã«", "ë"));
-		}
-		if (plat.getNom().contains("Ã¯")) {
-			plat.setNom(plat.getNom().replaceAll("Ã¯", "ï"));
-		}
-		if (plat.getNom().contains("Ã¢")) {
-			plat.setNom(plat.getNom().replaceAll("Ã¢", "â"));
-		}
-		if (plat.getNom().contains("Ã§")) {
-			plat.setNom(plat.getNom().replaceAll("Ã§", "ç"));
-		}
-		if (plat.getNom().contains("Ã")) {
-			plat.setNom(plat.getNom().replaceAll("Ã", "à"));
-		}}
-		if ("Glace".equalsIgnoreCase(plat.getCategorie())){
-			if(plat.getPrixg()==0|plat.getPrixm()==0|plat.getPrixp()==0){
+		if ("Glace".equalsIgnoreCase(plat.getCategorie())) {
+			if (plat.getPrixg() == 0 | plat.getPrixm() == 0 | plat.getPrixp() == 0) {
 				plat.setPrixg(prixgGlace);
 				plat.setPrixp(prixpGlace);
 				plat.setPrixm(prixmGlace);
 				isud = pSer.upDatePlats(plat);
-				
-			}else{
-				List<Plats> ListeGlace=pSer.getPlatsByCategorie("Glace");
-				for(Plats p: ListeGlace){
+
+			} else {
+				List<Plats> ListeGlace = pSer.getPlatsByCategorie("Glace");
+				for (Plats p : ListeGlace) {
 					p.setPrixg(plat.getPrixg());
 					p.setPrixm(plat.getPrixm());
 					p.setPrixp(plat.getPrixp());
 					isud = pSer.upDatePlats(p);
 				}
 			}
-		} else{
+		} else {
 			isud = pSer.upDatePlats(plat);
 		}
 		if (isud) {
@@ -389,7 +394,7 @@ public class AdminController {
 			ra.addAttribute("msg", "la modification à fail");
 			return "redirect:/admin/carte";
 		}
-		
+
 	}
 
 	@RequestMapping(value = "/submitAddV", method = RequestMethod.POST)
@@ -421,17 +426,17 @@ public class AdminController {
 		if (vin.getAppelation().contains("Ã")) {
 			vin.setAppelation(vin.getAppelation().replaceAll("Ã", "à"));
 		}
-		if(!"-".equals(vin.getPrix25())){
-			vin.setPrix25(vin.getPrix25()+"€");
+		if (!"-".equals(vin.getPrix25())) {
+			vin.setPrix25(vin.getPrix25() + "€");
 		}
-		if(!"-".equals(vin.getPrix50())){
-			vin.setPrix50(vin.getPrix50()+"€");
+		if (!"-".equals(vin.getPrix50())) {
+			vin.setPrix50(vin.getPrix50() + "€");
 		}
-		if(!"-".equals(vin.getPrixv())){
-			vin.setPrixv(vin.getPrixv()+"€");
+		if (!"-".equals(vin.getPrixv())) {
+			vin.setPrixv(vin.getPrixv() + "€");
 		}
-		if(!"-".equals(vin.getPrixb())){
-			vin.setPrixb(vin.getPrixb()+"€");
+		if (!"-".equals(vin.getPrixb())) {
+			vin.setPrixb(vin.getPrixb() + "€");
 		}
 		boolean isAdd = vSer.addVins(vin);
 		if (isAdd) {
@@ -504,6 +509,7 @@ public class AdminController {
 			return "redirect:/admin/carte";
 		}
 	}
+
 	@RequestMapping(value = "/submitAddB", method = RequestMethod.POST)
 	public String addBoissonpost(@ModelAttribute Boissons boisson, RedirectAttributes ra) {
 		if (boisson.getNom().contains("Ã©")) {
@@ -533,7 +539,7 @@ public class AdminController {
 		if (boisson.getNom().contains("Ã")) {
 			boisson.setNom(boisson.getNom().replaceAll("Ã", "à"));
 		}
-		
+
 		boolean isAdd = bSer.addBoissons(boisson);
 		if (isAdd) {
 			return "redirect:/admin/carte";
@@ -593,6 +599,7 @@ public class AdminController {
 			return "redirect:/admin/carte";
 		}
 	}
+
 	@RequestMapping(value = "/logout", method = RequestMethod.POST)
 	public String logout(RedirectAttributes ra) {
 		return "acceuil";
@@ -610,10 +617,10 @@ public class AdminController {
 			return "redirect:/admin/info";
 		}
 	}
-	
+
 	@RequestMapping(value = "/submitUpDateI", method = RequestMethod.POST)
 	public String upDateImagespost(@ModelAttribute Images image, RedirectAttributes ra) {
-		String beginPath="https://drive.google.com/uc?id=";
+		String beginPath = "https://drive.google.com/uc?id=";
 		image.setPath(beginPath.concat(image.getPath()));
 		boolean isud = iSer.upDateImages(image);
 		if (isud) {
