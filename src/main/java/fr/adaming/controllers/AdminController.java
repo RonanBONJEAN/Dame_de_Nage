@@ -191,7 +191,7 @@ public class AdminController {
 			}
 
 		}
-		if (listePrixGlace.size > 0) {
+		if (listePrixGlace.size() > 0) {
 			listePrixGlace.add(listeGlace.get(0));
 			this.prixpGlace = listePrixGlace.get(0).getPrixp();
 			this.prixmGlace = listePrixGlace.get(0).getPrixm();
