@@ -284,33 +284,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/submitAddP", method = RequestMethod.POST)
 	public String addPlatpost(@ModelAttribute Plats plat, RedirectAttributes ra) {
-		if (plat.getNom().contains("Ã©")) {
-			plat.setNom(plat.getNom().replaceAll("Ã©", "é"));
-		}
-		if (plat.getNom().contains("Ã¨")) {
-			plat.setNom(plat.getNom().replaceAll("Ã¨", "è"));
-		}
-		if (plat.getNom().contains("Ãª")) {
-			plat.setNom(plat.getNom().replaceAll("Ãª", "ê"));
-		}
-		if (plat.getNom().contains("Ã´")) {
-			plat.setNom(plat.getNom().replaceAll("Ã´", "ô"));
-		}
-		if (plat.getNom().contains("Ã«")) {
-			plat.setNom(plat.getNom().replaceAll("Ã«", "ë"));
-		}
-		if (plat.getNom().contains("Ã¯")) {
-			plat.setNom(plat.getNom().replaceAll("Ã¯", "ï"));
-		}
-		if (plat.getNom().contains("Ã¢")) {
-			plat.setNom(plat.getNom().replaceAll("Ã¢", "â"));
-		}
-		if (plat.getNom().contains("Ã§")) {
-			plat.setNom(plat.getNom().replaceAll("Ã§", "ç"));
-		}
-		if (plat.getNom().contains("Ã")) {
-			plat.setNom(plat.getNom().replaceAll("Ã", "à"));
-		}
+		
 		if ("Glace".equalsIgnoreCase(plat.getCategorie())) {
 			plat.setPrixg(prixgGlace);
 			plat.setPrixp(prixpGlace);
@@ -341,35 +315,7 @@ public class AdminController {
 	@RequestMapping(value = "/submitUpDateP", method = RequestMethod.POST)
 	public String upDatePlatpost(@ModelAttribute Plats plat, RedirectAttributes ra) {
 		boolean isud = true;
-		if (plat.getNom() != null) {
-			if (plat.getNom().contains("Ã©")) {
-				plat.setNom(plat.getNom().replaceAll("Ã©", "é"));
-			}
-			if (plat.getNom().contains("Ã¨")) {
-				plat.setNom(plat.getNom().replaceAll("Ã¨", "è"));
-			}
-			if (plat.getNom().contains("Ãª")) {
-				plat.setNom(plat.getNom().replaceAll("Ãª", "ê"));
-			}
-			if (plat.getNom().contains("Ã´")) {
-				plat.setNom(plat.getNom().replaceAll("Ã´", "ô"));
-			}
-			if (plat.getNom().contains("Ã«")) {
-				plat.setNom(plat.getNom().replaceAll("Ã«", "ë"));
-			}
-			if (plat.getNom().contains("Ã¯")) {
-				plat.setNom(plat.getNom().replaceAll("Ã¯", "ï"));
-			}
-			if (plat.getNom().contains("Ã¢")) {
-				plat.setNom(plat.getNom().replaceAll("Ã¢", "â"));
-			}
-			if (plat.getNom().contains("Ã§")) {
-				plat.setNom(plat.getNom().replaceAll("Ã§", "ç"));
-			}
-			if (plat.getNom().contains("Ã")) {
-				plat.setNom(plat.getNom().replaceAll("Ã", "à"));
-			}
-		}
+		
 		if ("Glace".equalsIgnoreCase(plat.getCategorie())) {
 			if (plat.getPrixg() == 0 | plat.getPrixm() == 0 | plat.getPrixp() == 0) {
 				plat.setPrixg(prixgGlace);
@@ -400,33 +346,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/submitAddV", method = RequestMethod.POST)
 	public String addVinpost(@ModelAttribute Vins vin, RedirectAttributes ra) {
-		if (vin.getAppelation().contains("Ã©")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã©", "é"));
-		}
-		if (vin.getAppelation().contains("Ã¨")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã¨", "è"));
-		}
-		if (vin.getAppelation().contains("Ãª")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ãª", "ê"));
-		}
-		if (vin.getAppelation().contains("Ã´")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã´", "ô"));
-		}
-		if (vin.getAppelation().contains("Ã«")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã«", "ë"));
-		}
-		if (vin.getAppelation().contains("Ã¯")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã¯", "ï"));
-		}
-		if (vin.getAppelation().contains("Ã¢")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã¢", "â"));
-		}
-		if (vin.getAppelation().contains("Ã§")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã§", "ç"));
-		}
-		if (vin.getAppelation().contains("Ã")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã", "à"));
-		}
+		
 		if (!"-".equals(vin.getPrix25())) {
 			vin.setPrix25(vin.getPrix25() + "€");
 		}
@@ -463,33 +383,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/submitUpDateV", method = RequestMethod.POST)
 	public String upDateVinpost(@ModelAttribute Vins vin, RedirectAttributes ra) {
-		if (vin.getAppelation().contains("Ã©")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã©", "é"));
-		}
-		if (vin.getAppelation().contains("Ã¨")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã¨", "è"));
-		}
-		if (vin.getAppelation().contains("Ãª")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ãª", "ê"));
-		}
-		if (vin.getAppelation().contains("Ã´")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã´", "ô"));
-		}
-		if (vin.getAppelation().contains("Ã«")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã«", "ë"));
-		}
-		if (vin.getAppelation().contains("Ã¯")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã¯", "ï"));
-		}
-		if (vin.getAppelation().contains("Ã¢")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã¢", "â"));
-		}
-		if (vin.getAppelation().contains("Ã§")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã§", "ç"));
-		}
-		if (vin.getAppelation().contains("Ã")) {
-			vin.setAppelation(vin.getAppelation().replaceAll("Ã", "à"));
-		}
+		
 		if (vin.getPrixv().contains("â¬")) {
 			vin.setPrixv(vin.getPrixv().replaceAll("â¬", "€"));
 		}
@@ -513,33 +407,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/submitAddB", method = RequestMethod.POST)
 	public String addBoissonpost(@ModelAttribute Boissons boisson, RedirectAttributes ra) {
-		if (boisson.getNom().contains("Ã©")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã©", "é"));
-		}
-		if (boisson.getNom().contains("Ã¨")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã¨", "è"));
-		}
-		if (boisson.getNom().contains("Ãª")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ãª", "ê"));
-		}
-		if (boisson.getNom().contains("Ã´")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã´", "ô"));
-		}
-		if (boisson.getNom().contains("Ã«")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã«", "ë"));
-		}
-		if (boisson.getNom().contains("Ã¯")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã¯", "ï"));
-		}
-		if (boisson.getNom().contains("Ã¢")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã¢", "â"));
-		}
-		if (boisson.getNom().contains("Ã§")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã§", "ç"));
-		}
-		if (boisson.getNom().contains("Ã")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã", "à"));
-		}
+		
 
 		boolean isAdd = bSer.addBoissons(boisson);
 		if (isAdd) {
@@ -565,33 +433,7 @@ public class AdminController {
 
 	@RequestMapping(value = "/submitUpDateB", method = RequestMethod.POST)
 	public String upDateBoissonpost(@ModelAttribute Boissons boisson, RedirectAttributes ra) {
-		if (boisson.getNom().contains("Ã©")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã©", "é"));
-		}
-		if (boisson.getNom().contains("Ã¨")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã¨", "è"));
-		}
-		if (boisson.getNom().contains("Ãª")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ãª", "ê"));
-		}
-		if (boisson.getNom().contains("Ã´")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã´", "ô"));
-		}
-		if (boisson.getNom().contains("Ã«")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã«", "ë"));
-		}
-		if (boisson.getNom().contains("Ã¯")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã¯", "ï"));
-		}
-		if (boisson.getNom().contains("Ã¢")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã¢", "â"));
-		}
-		if (boisson.getNom().contains("Ã§")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã§", "ç"));
-		}
-		if (boisson.getNom().contains("Ã")) {
-			boisson.setNom(boisson.getNom().replaceAll("Ã", "à"));
-		}
+		
 		boolean isud = bSer.upDateBoissons(boisson);
 		if (isud) {
 			return "redirect:/admin/carte";
