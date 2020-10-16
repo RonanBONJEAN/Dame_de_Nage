@@ -63,27 +63,27 @@ public class AdminController {
 		Images cropArticle1 = new Images();
 		Images cropArticle2 = new Images();
 		List<Images> liste = iSer.getAllImages();
-		if (liste.size()>0){
-		for (Images i : liste) {
-			if ("Slider1".equalsIgnoreCase(i.getName())) {
-				imageSlider1 = i;
-			} else if ("Slider2".equalsIgnoreCase(i.getName())) {
-				imageSlider2 = i;
-			} else if ("Slider3".equalsIgnoreCase(i.getName())) {
-				imageSlider3 = i;
-			} else if ("Article1".equalsIgnoreCase(i.getName())) {
-				imageArticle1 = i;
-			} else if ("Article2".equalsIgnoreCase(i.getName())) {
-				imageArticle2 = i;
+		if (liste.size() > 0) {
+			for (Images i : liste) {
+				if ("Slider1".equalsIgnoreCase(i.getName())) {
+					imageSlider1 = i;
+				} else if ("Slider2".equalsIgnoreCase(i.getName())) {
+					imageSlider2 = i;
+				} else if ("Slider3".equalsIgnoreCase(i.getName())) {
+					imageSlider3 = i;
+				} else if ("Article1".equalsIgnoreCase(i.getName())) {
+					imageArticle1 = i;
+				} else if ("Article2".equalsIgnoreCase(i.getName())) {
+					imageArticle2 = i;
+				}
+
 			}
 
-		}
-
-		cropSlider1.setPath(imageSlider1.getPath().substring(31));
-		cropSlider2.setPath(imageSlider2.getPath().substring(31));
-		cropSlider3.setPath(imageSlider3.getPath().substring(31));
-		cropArticle1.setPath(imageArticle1.getPath().substring(31));
-		cropArticle2.setPath(imageArticle2.getPath().substring(31));
+			cropSlider1.setPath(imageSlider1.getPath().substring(31));
+			cropSlider2.setPath(imageSlider2.getPath().substring(31));
+			cropSlider3.setPath(imageSlider3.getPath().substring(31));
+			cropArticle1.setPath(imageArticle1.getPath().substring(31));
+			cropArticle2.setPath(imageArticle2.getPath().substring(31));
 		}
 		ModelAndView mv = new ModelAndView();
 
@@ -194,17 +194,17 @@ public class AdminController {
 		}
 		if (listePrixGlace.size() > 0) {
 			listePrixGlace.add(listeGlace.get(0));
-			this.prixpGlace = listePrixGlace.get(0).getPrixp();
-			this.prixmGlace = listePrixGlace.get(0).getPrixm();
-			this.prixgGlace = listePrixGlace.get(0).getPrixg();
-			for (Vins v : listeV) {
-				if (v.getType().equalsIgnoreCase("Rouge")) {
-					listeVinsRouge.add(v);
-				} else if (v.getType().equalsIgnoreCase("Blanc")) {
-					listeVinsBlanc.add(v);
-				} else if (v.getType().equalsIgnoreCase("Rose")) {
-					listeVinsRose.add(v);
-				}
+		}
+		this.prixpGlace = listePrixGlace.get(0).getPrixp();
+		this.prixmGlace = listePrixGlace.get(0).getPrixm();
+		this.prixgGlace = listePrixGlace.get(0).getPrixg();
+		for (Vins v : listeV) {
+			if (v.getType().equalsIgnoreCase("Rouge")) {
+				listeVinsRouge.add(v);
+			} else if (v.getType().equalsIgnoreCase("Blanc")) {
+				listeVinsBlanc.add(v);
+			} else if (v.getType().equalsIgnoreCase("Rose")) {
+				listeVinsRose.add(v);
 			}
 		}
 

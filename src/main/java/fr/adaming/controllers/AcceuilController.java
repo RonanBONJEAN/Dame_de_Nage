@@ -166,17 +166,17 @@ public class AcceuilController {
 		}
 		if (listePrixGlace.size() > 0) {
 			listePrixGlace.add(listeGlace.get(0));
-			for (Vins v : listeV) {
-				if (v.getType().equalsIgnoreCase("Rouge")) {
+		}
+		for (Vins v : listeV) {
+			if (v.getType().equalsIgnoreCase("Rouge")) {
 
-					listeVinsRouge.add(v);
-				} else if (v.getType().equalsIgnoreCase("Blanc")) {
+				listeVinsRouge.add(v);
+			} else if (v.getType().equalsIgnoreCase("Blanc")) {
 
-					listeVinsBlanc.add(v);
-				} else if (v.getType().equalsIgnoreCase("Rose")) {
+				listeVinsBlanc.add(v);
+			} else if (v.getType().equalsIgnoreCase("Rose")) {
 
-					listeVinsRose.add(v);
-				}
+				listeVinsRose.add(v);
 			}
 		}
 
