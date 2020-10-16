@@ -194,10 +194,10 @@ public class AdminController {
 		}
 		if (listePrixGlace.size() > 0) {
 			listePrixGlace.add(listeGlace.get(0));
-		}
 		this.prixpGlace = listePrixGlace.get(0).getPrixp();
 		this.prixmGlace = listePrixGlace.get(0).getPrixm();
 		this.prixgGlace = listePrixGlace.get(0).getPrixg();
+		}
 		for (Vins v : listeV) {
 			if (v.getType().equalsIgnoreCase("Rouge")) {
 				listeVinsRouge.add(v);
